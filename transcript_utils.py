@@ -65,8 +65,14 @@ if __name__ == "__main__":
 #     
 #     vid_file_to_transcript_txt(vid_file_path, output_txt_file_path)
     
-    in_dir_path = "C:\\Users\\Brandon\\Documents\\Personal_Projects\\transcript_tools_big_data_test\\test_in_dir"
-    out_dir_path = "C:\\Users\\Brandon\\Documents\\Personal_Projects\\transcript_tools_big_data_test\\test_out_dir"
+
+
+
+    
+    # in_dir_path = "C:\\Users\\Brandon\\Documents\\Personal_Projects\\transcript_tools_big_data_test\\test_in_dir"
+    # out_dir_path = "C:\\Users\\Brandon\\Documents\\Personal_Projects\\transcript_tools_big_data_test\\test_out_dir"
+    in_dir_path = 'C:/tools/p/confluence_vids/version_control'
+    out_dir_path = 'C:/tools/p/confluence_vids/version_control/transcripts'
     
     vid_file_to_transcript_txt_for_all_vid_nested_vid_files_in_dir(in_dir_path, out_dir_path)
     
