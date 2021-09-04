@@ -1,42 +1,13 @@
 import speech_recognition as sr
 import moviepy.editor as me
 
-# VIDEO_FILE = "C:/Users/mt204e/Videos/2021-09-03 11-52-22.mkv"
-# VIDEO_FILE = "C:\\Users\\Brandon\\Documents\\Other\\temp\\post_0231.mp4"
+# from sms
+from sms.file_system_utils import file_system_utils as fsu
+
+
 OUTPUT_AUDIO_FILE = "converted.wav"
-# OUTPUT_TEXT_FILE = "recognized.txt"
-# try:
-# #     print('starting try...')
-# #     video_clip = me.VideoFileClip(r"{}".format(VIDEO_FILE))
-# #     video_clip.audio.write_audiofile(r"{}".format(OUTPUT_AUDIO_FILE))
-# #     recognizer =  sr.Recognizer()
-# #     audio_clip = sr.AudioFile("{}".format(OUTPUT_AUDIO_FILE))
-# #     with audio_clip as source:
-# #         audio_file = recognizer.record(source)
-# #     print("Please wait ...")
-# #     result = recognizer.recognize_google(audio_file)
-# #     with open(OUTPUT_TEXT_FILE, 'w') as file:
-# #         file.write(result)
-# #         print("Speech to text conversion successful.")
-# # except Exception as e:
-# #     print("Attempt failed -- ", e)
-# # try:
-# print('starting try...')
-# video_clip = me.VideoFileClip(r"{}".format(VIDEO_FILE))
-# video_clip.audio.write_audiofile(r"{}".format(OUTPUT_AUDIO_FILE))
-# recognizer =  sr.Recognizer()
-# audio_clip = sr.AudioFile("{}".format(OUTPUT_AUDIO_FILE))
-# with audio_clip as source:
-#     audio_file = recognizer.record(source)
-# print("Please wait ...")
-# result = recognizer.recognize_google(audio_file)
-# with open(OUTPUT_TEXT_FILE, 'w') as file:
-#     file.write(result)
-#     print("Speech to text conversion successful.")
-# # except Exception as e:
-# #     print("Attempt failed -- ", e)
-#     
-# #     pip install SpeechRecognition
+VID_FILE_EXT_L = ['.mp4']
+
 
 def vid_file_to_transcript_txt(vid_file_path, output_txt_file_path):
     print('starting try...')
@@ -53,15 +24,29 @@ def vid_file_to_transcript_txt(vid_file_path, output_txt_file_path):
     print("Speech to text conversion successful.")
     
     
+def vid_file_to_transcript_txt_for_all_vid_nested_vid_files_in_dir(in_dir_path, out_dir_path):
+    file_path_l = fsu.get_dir_content_l(in_dir_path, object_type = 'file', content_type = 'abs_path', recurs_dirs = True)
+    
+    print(file_path_l)
+    
+    
     
     
     
     
 if __name__ == "__main__":
-    vid_file_path = "C:\\Users\\Brandon\\Documents\\Other\\temp\\post_0231.mp4"
-    output_txt_file_path = "recognized.txt"
+#     vid_file_path = "C:\\Users\\Brandon\\Documents\\Other\\temp\\post_0231.mp4"
+#     output_txt_file_path = "recognized.txt"
+#     
+#     vid_file_to_transcript_txt(vid_file_path, output_txt_file_path)
     
-    vid_file_to_transcript_txt(vid_file_path, output_txt_file_path)
+    in_dir_path = "C:\\Users\\Brandon\\Documents\\Personal_Projects\\transcript_tools_big_data_test\\test_in_dir"
+    out_dir_path = "C:\\Users\\Brandon\\Documents\\Personal_Projects\\transcript_tools_big_data_test\\test_out_dir"
+    
+    vid_file_to_transcript_txt_for_all_vid_nested_vid_files_in_dir(in_dir_path, out_dir_path)
+    
+    
+    
     print('done')
     
     
