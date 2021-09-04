@@ -1,5 +1,6 @@
 import speech_recognition as sr
 import moviepy.editor as me
+import os
 
 # from sms
 from sms.file_system_utils import file_system_utils as fsu
@@ -25,11 +26,35 @@ def vid_file_to_transcript_txt(vid_file_path, output_txt_file_path):
     
     
 def vid_file_to_transcript_txt_for_all_vid_nested_vid_files_in_dir(in_dir_path, out_dir_path):
+    
+    fsu.make_dir_if_not_exist(out_dir_path)
+    
     file_path_l = fsu.get_dir_content_l(in_dir_path, object_type = 'file', content_type = 'abs_path', recurs_dirs = True)
     
     print(file_path_l)
     
+    vid_file_path_l = []
+    for file_path in file_path_l:
+        
+        ext = fsu.get_extention(file_path)
+        
+        if ext in VID_FILE_EXT_L:
+            vid_file_path_l.append(file_path)
+            
+    print(vid_file_path_l)
     
+    
+    for vid_file_path in vid_file_path_l:
+        print('')
+        print('    Trying to create transcript for :  ', vid_file_path)
+        print('')
+        
+        vid_name = fsu.get_basename_from_path(vid_file_path, include_ext = False)
+        
+        transcript_file_path = os.path.join(out_dir_path, vid_name + '__transcript.txt')
+        
+        vid_file_to_transcript_txt(vid_file_path, transcript_file_path)
+        
     
     
     
